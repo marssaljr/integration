@@ -1,7 +1,10 @@
 let soap = require ( 'soap' );
 
-let uri = 'http://www.soapclient.com/xml/soapresponder.wsdl';
+//should return a dailydilbert xml
+let uri = 'http://www.gcomputer.net/webservices/dilbert.asmx?wsdl';
 soap.createClient ( uri, ( err, client ) => {
-    if ( err ) return console.log ( err );
-    console.log ( client );
+    client.DailyDilbert ( { ADate: "2021-27-02" }, (err, result) => {
+        if ( err ) return console.log ( err );
+        console.log ( result.DailyDilbertResult );
+    } );
 });
